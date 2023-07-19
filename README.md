@@ -9,13 +9,13 @@ Hey
 
 In the future I plan on dockerizing it and integrate with Grafana. AB feel free to do it for me.
 
-### Getting started.
+### Getting started
 
 - First thing to do is installing the packages
 - Create your own .env , copy paste and populate those env variables.
 - Happy coding!
 
-### Resources:
+### Resources
 
-zod: [Zod docs](https://zod.dev/)
-prisma: [Prisma docs](https://www.prisma.io/docs/getting-started)
+- zod: [Zod docs](https://zod.dev/)
+- prisma: [Prisma docs](https://www.prisma.io/docs/getting-started)
