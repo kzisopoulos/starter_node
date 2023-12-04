@@ -10,21 +10,23 @@ import { router as refreshRouter } from "../routes/refresh.route";
 import { router as logoutRouter } from "../routes/logout.route";
 import cors from "cors";
 import { corsOptions } from "../config/corsOptions";
+import bodyParser from "body-parser";
 import { verifyJWT } from "../middleware/verifyJWT";
 
 const cookieParser = require("cookie-parser");
 const app: Express = express();
 const PORT = process.env.PORT || 8001;
-
 // Middlewares apply on all routes
 
+app.use(bodyParser.json());
 app.use(logger); // custom middleware logger
-app.use(cookieParser());
 app.use(credentials);
-app.use(cors(corsOptions)); // cross origin resource sharing
-app.use(express.urlencoded({ extended: false })); // for getting form data
 app.use(express.json()); // for getting json data
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // for getting form data
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser());
+app.use(cors({ ...corsOptions, credentials: true })); // cross origin resource sharing
 
 // Routes
 app.use("/api/register", registerRouter);

@@ -12,7 +12,6 @@ const prisma = new PrismaClient();
 const login = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
-
     loginPayloadSchema.parse(req.body);
 
     // find the user
@@ -46,11 +45,16 @@ const login = async (req: Request, res: Response) => {
 
       // save the new refresh token to the database
       await prisma.user.update({ where: { username: username }, data: { refreshToken: refreshToken } });
+
+      // res.header("Access-Control-Allow-Credentials: true");
+      // res.header("Access-Control-Allow-Origin", "*");
+      // res.header("Access-Control-Allow-Headers", "*");
+
       // saving refresh token with current user
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
-        // sameSite: "none",
-        // secure: true,
+        // sameSite: "lax",
+        secure: true,
         maxAge: 24 * 60 * 60 * 1000,
       });
       const response: RouteResponse<AuthRouteResponse> = {

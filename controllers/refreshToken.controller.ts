@@ -9,7 +9,6 @@ const prisma = new PrismaClient();
 
 const refreshToken = async (req: Request, res: Response) => {
   const cookies = req.cookies;
-
   const response: RouteResponse<null> = {
     code: 401,
     data: null,
