@@ -4,14 +4,12 @@ import { logger } from "../middleware/logEvents";
 import { errorHandler } from "../middleware/errorHandler";
 import { credentials } from "../middleware/credentials";
 import { router as registerRouter } from "../routes/register.route";
-// import { router as blogRouter } from "../routes/blog.route";
 import { router as loginRouter } from "../routes/login.route";
 import { router as refreshRouter } from "../routes/refresh.route";
 import { router as logoutRouter } from "../routes/logout.route";
 import cors from "cors";
 import { corsOptions } from "../config/corsOptions";
 import bodyParser from "body-parser";
-import { verifyJWT } from "../middleware/verifyJWT";
 
 const cookieParser = require("cookie-parser");
 const app: Express = express();
@@ -33,8 +31,6 @@ app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/logout", logoutRouter);
 app.use("/api/refresh", refreshRouter);
-
-// app.use("/api/blog", verifyJWT, blogRouter);
 
 // maybe implement a catch all here
 app.get("/", (req: Request, res: Response) => {

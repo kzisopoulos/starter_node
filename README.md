@@ -27,7 +27,7 @@ In the future I plan on :
 - Zod: [Zod docs](https://zod.dev/)
 - Prisma: [Prisma docs](https://www.prisma.io/docs/getting-started)
 
-#### <u>Setup prisma for lazy people</u>
+#### <u>Setup prisma shortcut</u>
 
 - `npx prisma init --datasource-provider sqlite` .
   This creates a new prisma directory with your Prisma schema file and configures SQLite as your database. You're now ready to model your data and create your database with some tables.
